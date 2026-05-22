@@ -1,4 +1,5 @@
 import numpy as np
+import os
 from ase import Atoms
 from ase import Atom
 from ase.io.vasp import read_vasp
@@ -80,58 +81,64 @@ int12 = interstitial_pos(halides[max_pos_a], halides[min_pos_c])
 
 # now just append these positions to end of the pristine atoms object, write POSCAR
 # here assuming I interstitial
-# need to fix stuff here with the filename, automatically input what Pb atom defect is relative to
+# FIX UP SO THIS IS MORE EFFICIENT/CLEANER -> FOR LOOPS?
+# ALSO FIX SO THAT IT PUTS I INT IN THE RIGHT PLACE
+# NEED TO REORDER I INDICES FOR I INT
 poscar_Ii = poscar.copy()
 poscar_Ii.append(Atom('I'))
 poscar_Ii.positions[-1] = int1
-write_vasp("I_int_Pb%d_1.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int2
-write_vasp("I_int_Pb%d_2.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int3
-write_vasp("I_int_Pb%d_3.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int4
-write_vasp("I_int_Pb%d_4.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int5
-write_vasp("I_int_Pb%d_5.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int6
-write_vasp("I_int_Pb%d_6.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int7
-write_vasp("I_int_Pb%d_7.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int8
-write_vasp("I_int_Pb%d_8.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int9
-write_vasp("I_int_Pb%d_9.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int10
-write_vasp("I_int_Pb%d_10.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int11
-write_vasp("I_int_Pb%d_11.vasp" % N, poscar_Ii, direct = True)
-poscar_Ii.positions[-1] = int12
-write_vasp("I_int_Pb%d_12.vasp" % N, poscar_Ii, direct = True)
+write_vasp(f"I_int_Pb{N}_1.vasp", poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int2
+#write_vasp("I_int_Pb%d_2.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int3
+#write_vasp("I_int_Pb%d_3.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int4
+#write_vasp("I_int_Pb%d_4.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int5
+#write_vasp("I_int_Pb%d_5.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int6
+#write_vasp("I_int_Pb%d_6.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int7
+#write_vasp("I_int_Pb%d_7.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int8
+#write_vasp("I_int_Pb%d_8.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int9
+#write_vasp("I_int_Pb%d_9.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int10
+#write_vasp("I_int_Pb%d_10.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int11
+#write_vasp("I_int_Pb%d_11.vasp" % N, poscar_Ii, direct = True)
+#poscar_Ii.positions[-1] = int12
+#write_vasp("I_int_Pb%d_12.vasp" % N, poscar_Ii, direct = True)
 
 # same thing but for Br interstitial
 poscar_Bri = poscar.copy()
 poscar_Bri.append(Atom('Br'))
 poscar_Bri.positions[-1] = int1
-write_vasp("Br_int_Pb%d_1.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int2
-write_vasp("Br_int_Pb%d_2.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int3
-write_vasp("Br_int_Pb%d_3.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int4
-write_vasp("Br_int_Pb%d_4.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int5
-write_vasp("Br_int_Pb%d_5.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int6
-write_vasp("Br_int_Pb%d_6.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int7
-write_vasp("Br_int_Pb%d_7.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int8
-write_vasp("Br_int_Pb%d_8.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int9
-write_vasp("Br_int_Pb%d_9.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int10
-write_vasp("Br_int_Pb%d_10.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int11
-write_vasp("Br_int_Pb%d_11.vasp" % N, poscar_Bri, direct = True)
-poscar_Bri.positions[-1] = int12
-write_vasp("Br_int_Pb%d_12.vasp" % N, poscar_Bri, direct = True)
+write_vasp(f"Br_int_Pb{N}_1.vasp", poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int2
+#write_vasp("Br_int_Pb%d_2.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int3
+#write_vasp("Br_int_Pb%d_3.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int4
+#write_vasp("Br_int_Pb%d_4.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int5
+#write_vasp("Br_int_Pb%d_5.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int6
+#write_vasp("Br_int_Pb%d_6.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int7
+#write_vasp("Br_int_Pb%d_7.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int8
+#write_vasp("Br_int_Pb%d_8.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int9
+#write_vasp("Br_int_Pb%d_9.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int10
+#write_vasp("Br_int_Pb%d_10.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int11
+#write_vasp("Br_int_Pb%d_11.vasp" % N, poscar_Bri, direct = True)
+#poscar_Bri.positions[-1] = int12
+#write_vasp("Br_int_Pb%d_12.vasp" % N, poscar_Bri, direct = True)
+
+# move all these files to output directory to clean folders up
+dir_path = os.getcwd()
+os.replace(f"{dir_path}/Br_int_Pb{N}_1.vasp", f"{dir_path}/../poscar_out/Br_int_Pb{N}_1.vasp")
