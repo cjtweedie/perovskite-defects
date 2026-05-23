@@ -5,10 +5,8 @@ from ase import Atom
 from ase.io.vasp import read_vasp
 from ase.io.vasp import write_vasp
 
-# TURN THIS INTO SOMETHING THAT CAN TAKE IN A PRISTINE POSCAR
-# AND CHURN OUT A POSCAR WITH DEFECTS
-# AFTER SPECIFYING THE Pb ATOM OF THE OCTAHEDRON OF CHOICE
-# WILL GENERATE INTERSTITIALS ALONG ALL OCTAHEDRAL EDGES
+# directory path variable for os stuff later
+dir_path = os.getcwd()
 
 # take in vasp POSCAR as atoms input object
 poscar = read_vasp("POSCAR.vasp")
@@ -47,6 +45,7 @@ def halide_pos(atoms: Atoms, idx_Pb: int):
     # outputs the (Cartesian) positions of each halide atom around the given octahedron
     return np.array(halide_atoms.get_positions())
 
+
 # choose which Pb atom to centre the defects around
 # try to scan through a range of Pb atoms with different local chemical environments
 # make this a function so can just interface through an i/o file
@@ -80,27 +79,21 @@ int_positions = {
     }
 
 # now just append these positions to end of the pristine atoms object, write POSCAR
-# here assuming I interstitial
-# FIX UP SO THIS IS MORE EFFICIENT/CLEANER -> FOR LOOPS?
-# reference the corresponding pos vector for each edge index 0->11
-# can easily write unique file names in each loop with f strings
-# ALSO FIX SO THAT IT PUTS I INT IN THE RIGHT PLACE
-# NEED TO REORDER I INDICES FOR I INT
-
-# move all these files to output directory as they are written to clean folders up 
-dir_path = os.getcwd()
-
+# reference the corresponding position vector for each edge index 0->11, easily write unique file names in each loop with f strings
+# do for both I and Br as the interstitial species
 poscar_Ii = poscar.copy()
-poscar_Ii.append(Atom('I'))
-for i in range(12):
-    poscar_Ii.positions[-1] = int_positions[i]
-    write_vasp(f"I_int_Pb{N}_{i+1}.vasp", poscar_Ii, direct = True)
-    os.replace(f"{dir_path}/I_int_Pb{N}_{i+1}.vasp", f"{dir_path}/../poscar_out/I_int_Pb{N}_{i+1}.vasp")
-
-# same thing but for Br interstitial
 poscar_Bri = poscar.copy()
+poscar_Ii.append(Atom('I'))
 poscar_Bri.append(Atom('Br'))
 for i in range(12):
+    poscar_Ii.positions[-1] = int_positions[i]
     poscar_Bri.positions[-1] = int_positions[i]
+    
+    # ALSO FIX SO THAT IT PUTS I INT IN THE RIGHT PLACE
+    # NEED TO REORDER I INDICES FOR I INT
+    write_vasp(f"I_int_Pb{N}_{i+1}.vasp", poscar_Ii, direct = True)
     write_vasp(f"Br_int_Pb{N}_{i+1}.vasp", poscar_Bri, direct = True)
+    
+    # move all these files to output directory as they are written to clean folders up
+    os.replace(f"{dir_path}/I_int_Pb{N}_{i+1}.vasp", f"{dir_path}/../poscar_out/I_int_Pb{N}_{i+1}.vasp")
     os.replace(f"{dir_path}/Br_int_Pb{N}_{i+1}.vasp", f"{dir_path}/../poscar_out/Br_int_Pb{N}_{i+1}.vasp")
