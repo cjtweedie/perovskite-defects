@@ -50,7 +50,7 @@ def halide_pos(atoms: Atoms, idx_Pb: int):
 # choose which Pb atom to centre the defects around
 # try to scan through a range of Pb atoms with different local chemical environments
 # make this a function so can just interface through an i/o file
-N = 39 # this is ion index in VESTA, which starts from 1, so need to -1 for python
+N = 57 # this is ion index in VESTA, which starts from 1, so need to -1 for python
 halides = halide_pos(poscar, N-1)
 
 # now generate all the positions of interstitial atoms,
@@ -96,28 +96,6 @@ for i in range(12):
     poscar_Ii.positions[-1] = int_positions[i]
     write_vasp(f"I_int_Pb{N}_{i+1}.vasp", poscar_Ii, direct = True)
     os.replace(f"{dir_path}/I_int_Pb{N}_{i+1}.vasp", f"{dir_path}/../poscar_out/I_int_Pb{N}_{i+1}.vasp")
-    #poscar_Ii.positions[-1] = int2
-    #write_vasp("I_int_Pb%d_2.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int3
-    #write_vasp("I_int_Pb%d_3.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int4
-    #write_vasp("I_int_Pb%d_4.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int5
-    #write_vasp("I_int_Pb%d_5.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int6
-    #write_vasp("I_int_Pb%d_6.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int7
-    #write_vasp("I_int_Pb%d_7.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int8
-    #write_vasp("I_int_Pb%d_8.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int9
-    #write_vasp("I_int_Pb%d_9.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int10
-    #write_vasp("I_int_Pb%d_10.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int11
-    #write_vasp("I_int_Pb%d_11.vasp" % N, poscar_Ii, direct = True)
-    #poscar_Ii.positions[-1] = int12
-    #write_vasp("I_int_Pb%d_12.vasp" % N, poscar_Ii, direct = True)
 
 # same thing but for Br interstitial
 poscar_Bri = poscar.copy()
@@ -126,25 +104,3 @@ for i in range(12):
     poscar_Bri.positions[-1] = int_positions[i]
     write_vasp(f"Br_int_Pb{N}_{i+1}.vasp", poscar_Bri, direct = True)
     os.replace(f"{dir_path}/Br_int_Pb{N}_{i+1}.vasp", f"{dir_path}/../poscar_out/Br_int_Pb{N}_{i+1}.vasp")
-    #poscar_Bri.positions[-1] = int2
-    #write_vasp("Br_int_Pb%d_2.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int3
-    #write_vasp("Br_int_Pb%d_3.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int4
-    #write_vasp("Br_int_Pb%d_4.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int5
-    #write_vasp("Br_int_Pb%d_5.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int6
-    #write_vasp("Br_int_Pb%d_6.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int7
-    #write_vasp("Br_int_Pb%d_7.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int8
-    #write_vasp("Br_int_Pb%d_8.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int9
-    #write_vasp("Br_int_Pb%d_9.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int10
-    #write_vasp("Br_int_Pb%d_10.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int11
-    #write_vasp("Br_int_Pb%d_11.vasp" % N, poscar_Bri, direct = True)
-    #poscar_Bri.positions[-1] = int12
-    #write_vasp("Br_int_Pb%d_12.vasp" % N, poscar_Bri, direct = True)
