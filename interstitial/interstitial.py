@@ -9,6 +9,8 @@ from ase.io.vasp import write_vasp
 dir_path = os.getcwd()
 
 # take in vasp POSCAR as atoms input object
+# might need to change ASE read vasp behaviour so that it can read files from arbitrary directories
+#poscar = read_vasp(f"{dir_path}/../poscar_in/POSCAR.vasp")
 poscar = read_vasp("POSCAR.vasp")
 
 # find midpoint on line connecting two lattice sites, with given position vectors pos1, pos2
