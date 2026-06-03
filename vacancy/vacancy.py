@@ -34,10 +34,6 @@ def halide_pos(atoms: Atoms, idx_Pb: int):
     dists_t = list(zip(dists, idx_halides))
     dists_t = sorted(dists_t)[0:6]
     halides_sorted = [j[1] for j in dists_t]
-    #halide_atoms = atoms[halides_sorted]
-    
-    # outputs the (Cartesian) positions of each halide atom around the given octahedron
-    #return np.array(halide_atoms.get_positions())
     
     # outputs the sorted list of halide indices only
     # don't need positions as we are just deleting halides at certain atom indices
@@ -52,33 +48,27 @@ N = 57 # this is ion index in VESTA, which starts from 1, so need to -1 for pyth
 # positions of all the halide vacancies is just the position vectors saved in halides
 # NOPE here just indices
 halides = halide_pos(poscar, N-1)
-print(halides[0])
-print(poscar.positions[halides[0]-1])
-print(poscar.positions[halides[0]])
-print(poscar.positions[halides[0]+1])
+#print(halides[0])
+#print(poscar.positions[halides[0]-1])
+#print(poscar.positions[halides[0]])
+#print(poscar.positions[halides[0]+1])
 
-# now just append these positions to end of the pristine atoms object, write POSCAR
-# reference the corresponding position vector for each edge index 0->11, easily write unique file names in each loop with f strings
-# do for both I and Br as the interstitial species
+# don't know what species of halide X about to be removed, placeholder X for now
+poscar_VX = poscar.copy()
 
 # now for each halide position, need to remove that atom from the list to create vacancy
-# need more systematic way so that no matter what atom index is, removing that will cause
-# the migrating atom which fills the vacancy to have index 159 (last element), so don't need to rearrange indices for NEB
-# that doesn't work because it depends on what the end point atom index is...won't be same for every path from single starting atom 
-
-poscar_Ii = poscar.copy()
-poscar_Bri = poscar.copy()
-
-del poscar_Ii[halides[0]]
-
-for i in range(6):    
-    del poscar_Ii[halides[i]]
-    del poscar_Bri[halides[i]]
+# need more systematic way so that no matter what atom index is, avoid global index mismatch
+for i in range(len(halides)):    
+    
+    # need to identify if I/Br being removed, just get chem symbols from atoms object before deleting the atom
+    # also figure out the Wyckoff position (if it was pristine cell) for nomenclature sake?
+    V_sym = poscar_VX.symbols[halides[i]]
+    #print(V_sym)
+    del poscar_VX[halides[i]]
     
     # NEED TO REORDER INDICES FOR END POINTS SO THEY ARE ADJACENT TO START POINT INDICES
-    write_vasp(f"I_vac_Pb{N}_X{i+1}.vasp", poscar_Ii, direct = True)
-    write_vasp(f"Br_vac_Pb{N}_X{i+1}.vasp", poscar_Bri, direct = True)
+    # also figure out better naming scheme which automatically deals with degenerate halide positions from different Pb atoms
+    write_vasp(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp", poscar_VX, direct = True)
     
     # move all these files to output directory as they are written to clean folders up
-    os.replace(f"{dir_path}/I_vac_Pb{N}_X{i+1}.vasp", f"{dir_path}/../poscar_out/I_vac_Pb{N}_X{i+1}.vasp")
-    os.replace(f"{dir_path}/Br_vac_Pb{N}_X{i+1}.vasp", f"{dir_path}/../poscar_out/Br_vac_Pb{N}_X{i+1}.vasp")
+    os.replace(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp", f"{dir_path}/../poscar_out/{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp")
