@@ -45,7 +45,7 @@ def halide_pos(atoms: Atoms, idx_Pb: int):
 # choose which Pb atom to centre the defects around
 # try to scan through a range of Pb atoms with different local chemical environments
 # make this a function so can just interface through an i/o file
-N = 50 # this is ion index in VESTA, which starts from 1, so need to -1 for python
+N = 49 # this is ion index in VESTA, which starts from 1, so need to -1 for python
 
 # positions of all the halide vacancies is just the position vectors saved in halides
 # NOPE here just indices
