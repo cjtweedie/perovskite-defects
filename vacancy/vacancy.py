@@ -1,5 +1,7 @@
 import numpy as np
 import os
+import re
+from pathlib import Path
 from ase import Atoms
 from ase import Atom
 from ase.io.vasp import read_vasp
@@ -43,7 +45,7 @@ def halide_pos(atoms: Atoms, idx_Pb: int):
 # choose which Pb atom to centre the defects around
 # try to scan through a range of Pb atoms with different local chemical environments
 # make this a function so can just interface through an i/o file
-N = 57 # this is ion index in VESTA, which starts from 1, so need to -1 for python
+N = 50 # this is ion index in VESTA, which starts from 1, so need to -1 for python
 
 # positions of all the halide vacancies is just the position vectors saved in halides
 # NOPE here just indices
@@ -56,6 +58,9 @@ halides = halide_pos(poscar, N-1)
 # don't know what species of halide X about to be removed, placeholder X for now
 poscar_VX = poscar.copy()
 
+# target path to move poscars into eventually
+poscar_path = Path(f"{dir_path}/../poscar_out/")
+
 # now for each halide position, need to remove that atom from the list to create vacancy
 # need more systematic way so that no matter what atom index is, avoid global index mismatch
 for i in range(len(halides)):    
@@ -67,8 +72,23 @@ for i in range(len(halides)):
     del poscar_VX[halides[i]]
     
     # NEED TO REORDER INDICES FOR END POINTS SO THEY ARE ADJACENT TO START POINT INDICES
-    # also figure out better naming scheme which automatically deals with degenerate halide positions from different Pb atoms
-    write_vasp(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp", poscar_VX, direct = True)
+    write_vasp(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp", poscar_VX, direct = True) 
     
-    # move all these files to output directory as they are written to clean folders up
-    os.replace(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp", f"{dir_path}/../poscar_out/{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp")
+    # also figure out better naming scheme which automatically deals with degenerate halide positions from different Pb atoms
+    #poscar_files = os.listdir(f"{dir_path}/../poscar_out/")
+    #print(poscar_files)
+    
+    # move all these files to output directory as they are written to clean folders up 
+    # but only move if no other vacancy file with same halide index 
+    # don't worry about specifying "vac" in the regex, all vacancy poscars will have indices > 12 (max in int poscar names) 
+    #print(bool([j for j in poscar_path.rglob(f"*{halides[i]+1}*")]))
+    if bool([j for j in poscar_path.rglob(f"*{halides[i]+1}*")]) == False:
+        os.replace(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp", f"{dir_path}/../poscar_out/{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp")
+        
+    else:
+        os.remove(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp")
+    
+    # regex tests...i think this won't work well for searching the entire list, unless I cat all the file strings together first
+    #if bool(re.search(r"\B"+str(halides[i]+1), [j for j in poscar_files])) == False:     
+        #os.replace(f"{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp", f"{dir_path}/../poscar_out/{V_sym}_vac_Pb{N}_{halides[i]+1}.vasp")
+            #break
