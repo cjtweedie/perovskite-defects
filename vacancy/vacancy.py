@@ -50,13 +50,6 @@ N = 49 # this is ion index in VESTA, which starts from 1, so need to -1 for pyth
 # positions of all the halide vacancies is just the position vectors saved in halides
 # NOPE here just indices
 halides = halide_pos(poscar, N-1)
-#print(halides[0])
-#print(poscar.positions[halides[0]-1])
-#print(poscar.positions[halides[0]])
-#print(poscar.positions[halides[0]+1])
-
-# don't know what species of halide X about to be removed, placeholder X for now
-poscar_VX = poscar.copy()
 
 # target path to move poscars into eventually
 poscar_path = Path(f"{dir_path}/../poscar_out/")
@@ -64,6 +57,10 @@ poscar_path = Path(f"{dir_path}/../poscar_out/")
 # now for each halide position, need to remove that atom from the list to create vacancy
 # need more systematic way so that no matter what atom index is, avoid global index mismatch
 for i in range(len(halides)):    
+    
+    # don't know what species of halide X about to be removed, placeholder X for now
+    # new copy of pristine poscar each loop so atom deletions don't stack up
+    poscar_VX = poscar.copy()
     
     # need to identify if I/Br being removed, just get chem symbols from atoms object before deleting the atom
     # also figure out the Wyckoff position (if it was pristine cell) for nomenclature sake?
