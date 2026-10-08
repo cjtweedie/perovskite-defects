@@ -1,0 +1,20 @@
+System = ortho CsPbI2Br + V defect in relaxed 160 atom supercell
+
+GGA = PE        ! XC functional; PBE
+IVDW = 12       ! DFT-D3 dispersion relation; additive vdW corrections to energy functional
+
+ENCUT = 500     ! energy cutoff for plane waves; converged
+ALGO = Normal   ! electronic minimisation algo; Blocked-Davidson scheme 
+NELM = 60       ! no. electronic minimisation steps; default
+EDIFF = 1E-8    ! tolerance for energy convergence; strict for dymmat
+ISMEAR = 0      ! Gaussian smearing; default
+SIGMA = 0.2     ! broadening of the smearing; default
+LREAL = .FALSE.	! reciprocal space evaluation of projection operators
+ISYM = 0        ! switches off symmetry so defect not repeated
+LWAVE = .FALSE.
+LCHARG = .FALSE.
+
+IBRION = -1     ! no ionic optimisation
+NSW = 0
+
+NCORE = 8       ! no. cores per orbital
