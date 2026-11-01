@@ -1,11 +1,10 @@
 phonopy:
-  version: "3.5.1"
+  version: "3.5.0"
   frequency_unit_conversion_factor: 15.633302
   symmetry_tolerance: 1.00000e-05
   configuration:
     dim: "1 1 1"
-    writedm: ".TRUE."
-    qpoints: "0.0 0.0 0.5"
+    qpoints: "0.0 0.0 0.0"
 
 physical_unit:
   atomic_mass: "AMU"

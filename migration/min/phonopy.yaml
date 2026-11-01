@@ -4,10 +4,7 @@ phonopy:
   symmetry_tolerance: 1.00000e-05
   configuration:
     dim: "1 1 1"
-    band: "0.0 0.0 0.0 0.5 0.0 0.0 0.5 0.5 0.0 0.0 0.5 0.0 0.0 0.0 0.0 0.0 0.0 0.5 0.5 0.0 0.5 0.5 0.5 0.5 0.0 0.5 0.5 0.0 0.0 0.5, 0.0 0.5 0.0 0.0 0.5 0.5, 0.5 0.0 0.5 0.5 0.0 0.0, 0.5 0.5 0.0 0.5 0.5 0.5"
-    band_points: "51"
-    band_labels: "$\\Gamma$ X S Y $\\Gamma$ Z U R T Z Y T U X S R"
-    band_connection: ".FALSE."
+    qpoints: "0.0 0.0 0.0"
 
 physical_unit:
   atomic_mass: "AMU"

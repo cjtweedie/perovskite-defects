@@ -20,46 +20,30 @@ freq_data_sad = data_sad["phonon"][0]["band"]
 # ensures that acoustic modes at gamma are omitted even with numerical error
 ftol = 0.05
 
-# function to calculate the product of all non-negative phonon frequencies in the minimum and transition state configurations
-def freq_prod(N: int, freq_data):
-    prod = 1
-    for j in range(N):
+def freq_scan(N_stop, freq_data):
+    #scan through first few entries to remove the negative & acoustic modes
+    for j in range(N_stop):
         freq = freq_data[j]["frequency"]
         if freq > ftol:
-           freq = freq
-        else:
-            freq = 1
-    
-        prod = prod*freq
+            break
+        
+    return j
+
+# function to calculate the product of all non-negative phonon frequencies in the minimum and transition state configurations
+def freq_prod(N: int, freq_data):
+    N_start = freq_scan(10, freq_data)
+    prod = 1
+    for j in range(N_start, N):
+        freq = freq_data[j]["frequency"]
+        prod = prod * freq
         
     return prod
 
-#def freq_prod(N: int, min, saddle):
-#    prod = 1
-#    for j in range(N):
-#        freq_min = min[j]["frequency"]
-#        freq_saddle = saddle[j]["frequency"]
-#        
-#        if freq_min  > ftol:
-#            freq_min = freq_min
-#        else:
-#            freq_min = 1
-#            
-#        if freq_saddle  > ftol:
-#            freq_saddle = freq_saddle
-#        else:
-#            freq_saddle = 1
-#    
-#        prod = prod*(freq_min/freq_saddle)
-#        
-#    return prod
-
 omega_min = freq_prod(len(freq_data_min), freq_data_min)
 omega_sad = freq_prod(len(freq_data_sad), freq_data_sad)
-pf = omega_min/omega_sad
-#pf2 = freq_prod2(len(freq_data_min), freq_data_min, freq_data_sad)
+pf = omega_min / omega_sad
 
-print("omega_min =", omega_min)
-print("omega_saddle =", omega_sad)
-print("Vineyard prefactor =", pf)
-#print("Vineyard prefactor =", pf2)
+f = open("vineyard_pf.txt", 'w')
+print("frequency product (min) =", omega_min, "THz", file=f)
+print("frequency product (saddle) =", omega_sad, "THz", file=f)
+print("Vineyard prefactor =", pf, "THz", file=f)
