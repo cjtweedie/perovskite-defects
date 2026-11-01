@@ -31,7 +31,7 @@ def freq_scan(N_stop, freq_data):
 
 # function to calculate the product of all non-negative phonon frequencies in the minimum and transition state configurations
 def freq_prod(N: int, freq_data):
-    N_start = freq_scan(10, freq_data)
+    N_start = freq_scan(5, freq_data)
     prod = 1
     for j in range(N_start, N):
         freq = freq_data[j]["frequency"]
