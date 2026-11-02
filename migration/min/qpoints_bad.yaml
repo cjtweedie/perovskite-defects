@@ -1,0 +1,964 @@
+nqpoint: 1      
+natom:   159    
+reciprocal_lattice:
+- [   0.05923617,   0.00000000,   0.00000000 ] # a*
+- [   0.00000000,   0.05768383,   0.00000000 ] # b*
+- [   0.00000000,   0.00000000,   0.04084409 ] # c*
+phonon:
+- q-position: [    0.0000000,    0.0000000,    0.0000000 ]
+  band:
+  - # 1
+    frequency:   -0.0217100840
+  - # 2
+    frequency:   -0.0202363380
+  - # 3
+    frequency:   -0.0130539383
+  - # 4
+    frequency:    0.1767094319
+  - # 5
+    frequency:    0.2312084547
+  - # 6
+    frequency:    0.2467892275
+  - # 7
+    frequency:    0.2483916013
+  - # 8
+    frequency:    0.2878170253
+  - # 9
+    frequency:    0.3019577918
+  - # 10
+    frequency:    0.3175853573
+  - # 11
+    frequency:    0.3287424366
+  - # 12
+    frequency:    0.3311388300
+  - # 13
+    frequency:    0.3434129332
+  - # 14
+    frequency:    0.3504049845
+  - # 15
+    frequency:    0.3614056270
+  - # 16
+    frequency:    0.3715342136
+  - # 17
+    frequency:    0.3752511270
+  - # 18
+    frequency:    0.3846356135
+  - # 19
+    frequency:    0.3958247623
+  - # 20
+    frequency:    0.4047352545
+  - # 21
+    frequency:    0.4221597296
+  - # 22
+    frequency:    0.4369603651
+  - # 23
+    frequency:    0.4424522833
+  - # 24
+    frequency:    0.4512247666
+  - # 25
+    frequency:    0.4625220450
+  - # 26
+    frequency:    0.4685982027
+  - # 27
+    frequency:    0.4810461408
+  - # 28
+    frequency:    0.4899846581
+  - # 29
+    frequency:    0.4944374437
+  - # 30
+    frequency:    0.4986862434
+  - # 31
+    frequency:    0.5091832838
+  - # 32
+    frequency:    0.5149662426
+  - # 33
+    frequency:    0.5206997400
+  - # 34
+    frequency:    0.5243590692
+  - # 35
+    frequency:    0.5331914754
+  - # 36
+    frequency:    0.5424648872
+  - # 37
+    frequency:    0.5473804330
+  - # 38
+    frequency:    0.5533162703
+  - # 39
+    frequency:    0.5589255678
+  - # 40
+    frequency:    0.5646713254
+  - # 41
+    frequency:    0.5727834053
+  - # 42
+    frequency:    0.5837609878
+  - # 43
+    frequency:    0.5890795534
+  - # 44
+    frequency:    0.6011530466
+  - # 45
+    frequency:    0.6072118261
+  - # 46
+    frequency:    0.6122394563
+  - # 47
+    frequency:    0.6171144396
+  - # 48
+    frequency:    0.6180630930
+  - # 49
+    frequency:    0.6245749939
+  - # 50
+    frequency:    0.6290926242
+  - # 51
+    frequency:    0.6369332001
+  - # 52
+    frequency:    0.6397677047
+  - # 53
+    frequency:    0.6482472852
+  - # 54
+    frequency:    0.6491147406
+  - # 55
+    frequency:    0.6549802996
+  - # 56
+    frequency:    0.6605580601
+  - # 57
+    frequency:    0.6693892260
+  - # 58
+    frequency:    0.6788415092
+  - # 59
+    frequency:    0.6823378374
+  - # 60
+    frequency:    0.6905321113
+  - # 61
+    frequency:    0.6974773113
+  - # 62
+    frequency:    0.6986273835
+  - # 63
+    frequency:    0.7033180660
+  - # 64
+    frequency:    0.7073137716
+  - # 65
+    frequency:    0.7128387535
+  - # 66
+    frequency:    0.7156805236
+  - # 67
+    frequency:    0.7187312173
+  - # 68
+    frequency:    0.7220335903
+  - # 69
+    frequency:    0.7277483246
+  - # 70
+    frequency:    0.7345816499
+  - # 71
+    frequency:    0.7389550019
+  - # 72
+    frequency:    0.7420556458
+  - # 73
+    frequency:    0.7512381383
+  - # 74
+    frequency:    0.7545089193
+  - # 75
+    frequency:    0.7566637988
+  - # 76
+    frequency:    0.7609889662
+  - # 77
+    frequency:    0.7653849526
+  - # 78
+    frequency:    0.7696896828
+  - # 79
+    frequency:    0.7734429474
+  - # 80
+    frequency:    0.7769774171
+  - # 81
+    frequency:    0.7812039200
+  - # 82
+    frequency:    0.7853647155
+  - # 83
+    frequency:    0.7887101707
+  - # 84
+    frequency:    0.7908175912
+  - # 85
+    frequency:    0.7986936677
+  - # 86
+    frequency:    0.8031493193
+  - # 87
+    frequency:    0.8053461380
+  - # 88
+    frequency:    0.8105686347
+  - # 89
+    frequency:    0.8116188895
+  - # 90
+    frequency:    0.8226068859
+  - # 91
+    frequency:    0.8260155075
+  - # 92
+    frequency:    0.8272619474
+  - # 93
+    frequency:    0.8300465763
+  - # 94
+    frequency:    0.8358656514
+  - # 95
+    frequency:    0.8371296479
+  - # 96
+    frequency:    0.8426471881
+  - # 97
+    frequency:    0.8453468538
+  - # 98
+    frequency:    0.8511947132
+  - # 99
+    frequency:    0.8536383683
+  - # 100
+    frequency:    0.8589823139
+  - # 101
+    frequency:    0.8642448566
+  - # 102
+    frequency:    0.8675358050
+  - # 103
+    frequency:    0.8714290622
+  - # 104
+    frequency:    0.8738356232
+  - # 105
+    frequency:    0.8803161132
+  - # 106
+    frequency:    0.8852363528
+  - # 107
+    frequency:    0.8895013770
+  - # 108
+    frequency:    0.8971608048
+  - # 109
+    frequency:    0.8994367040
+  - # 110
+    frequency:    0.9030070282
+  - # 111
+    frequency:    0.9080221847
+  - # 112
+    frequency:    0.9151604212
+  - # 113
+    frequency:    0.9165534579
+  - # 114
+    frequency:    0.9198594955
+  - # 115
+    frequency:    0.9270143397
+  - # 116
+    frequency:    0.9303452219
+  - # 117
+    frequency:    0.9368025045
+  - # 118
+    frequency:    0.9382824646
+  - # 119
+    frequency:    0.9430834287
+  - # 120
+    frequency:    0.9468574718
+  - # 121
+    frequency:    0.9490348543
+  - # 122
+    frequency:    0.9549167989
+  - # 123
+    frequency:    0.9646546640
+  - # 124
+    frequency:    0.9657223540
+  - # 125
+    frequency:    0.9700372491
+  - # 126
+    frequency:    0.9813164266
+  - # 127
+    frequency:    0.9821342699
+  - # 128
+    frequency:    0.9915165016
+  - # 129
+    frequency:    0.9919952844
+  - # 130
+    frequency:    0.9966213878
+  - # 131
+    frequency:    1.0081295238
+  - # 132
+    frequency:    1.0102374478
+  - # 133
+    frequency:    1.0148352430
+  - # 134
+    frequency:    1.0219052400
+  - # 135
+    frequency:    1.0256900138
+  - # 136
+    frequency:    1.0331730513
+  - # 137
+    frequency:    1.0374212501
+  - # 138
+    frequency:    1.0411044199
+  - # 139
+    frequency:    1.0423340784
+  - # 140
+    frequency:    1.0498823863
+  - # 141
+    frequency:    1.0516055553
+  - # 142
+    frequency:    1.0583009594
+  - # 143
+    frequency:    1.0594940556
+  - # 144
+    frequency:    1.0690255236
+  - # 145
+    frequency:    1.0734623437
+  - # 146
+    frequency:    1.0767564804
+  - # 147
+    frequency:    1.0855336453
+  - # 148
+    frequency:    1.0965553891
+  - # 149
+    frequency:    1.0992052690
+  - # 150
+    frequency:    1.1007928249
+  - # 151
+    frequency:    1.1045762395
+  - # 152
+    frequency:    1.1103505891
+  - # 153
+    frequency:    1.1173084206
+  - # 154
+    frequency:    1.1230339151
+  - # 155
+    frequency:    1.1242288655
+  - # 156
+    frequency:    1.1295116592
+  - # 157
+    frequency:    1.1349809917
+  - # 158
+    frequency:    1.1374728397
+  - # 159
+    frequency:    1.1414475246
+  - # 160
+    frequency:    1.1449823758
+  - # 161
+    frequency:    1.1499968934
+  - # 162
+    frequency:    1.1541177603
+  - # 163
+    frequency:    1.1597930749
+  - # 164
+    frequency:    1.1687241625
+  - # 165
+    frequency:    1.1746168388
+  - # 166
+    frequency:    1.1771593944
+  - # 167
+    frequency:    1.1829257856
+  - # 168
+    frequency:    1.1872242250
+  - # 169
+    frequency:    1.1984292000
+  - # 170
+    frequency:    1.1997403837
+  - # 171
+    frequency:    1.2068797142
+  - # 172
+    frequency:    1.2102106429
+  - # 173
+    frequency:    1.2154607722
+  - # 174
+    frequency:    1.2201900325
+  - # 175
+    frequency:    1.2231117373
+  - # 176
+    frequency:    1.2284340425
+  - # 177
+    frequency:    1.2353349244
+  - # 178
+    frequency:    1.2381378983
+  - # 179
+    frequency:    1.2468568633
+  - # 180
+    frequency:    1.2501093216
+  - # 181
+    frequency:    1.2552506025
+  - # 182
+    frequency:    1.2596015455
+  - # 183
+    frequency:    1.2681351662
+  - # 184
+    frequency:    1.2711143010
+  - # 185
+    frequency:    1.2729875755
+  - # 186
+    frequency:    1.2862487914
+  - # 187
+    frequency:    1.2893097920
+  - # 188
+    frequency:    1.2957435538
+  - # 189
+    frequency:    1.2997664326
+  - # 190
+    frequency:    1.3052478448
+  - # 191
+    frequency:    1.3111273450
+  - # 192
+    frequency:    1.3145527354
+  - # 193
+    frequency:    1.3213397760
+  - # 194
+    frequency:    1.3230876150
+  - # 195
+    frequency:    1.3356170552
+  - # 196
+    frequency:    1.3393316922
+  - # 197
+    frequency:    1.3416950287
+  - # 198
+    frequency:    1.3518201482
+  - # 199
+    frequency:    1.3585597214
+  - # 200
+    frequency:    1.3622532367
+  - # 201
+    frequency:    1.3707676300
+  - # 202
+    frequency:    1.3781119502
+  - # 203
+    frequency:    1.3823549108
+  - # 204
+    frequency:    1.3858415729
+  - # 205
+    frequency:    1.4060801444
+  - # 206
+    frequency:    1.4158006656
+  - # 207
+    frequency:    1.4202488102
+  - # 208
+    frequency:    1.4259492106
+  - # 209
+    frequency:    1.4391847975
+  - # 210
+    frequency:    1.4468208752
+  - # 211
+    frequency:    1.4555426757
+  - # 212
+    frequency:    1.4645689171
+  - # 213
+    frequency:    1.4723842970
+  - # 214
+    frequency:    1.4749486648
+  - # 215
+    frequency:    1.4906282835
+  - # 216
+    frequency:    1.4926827197
+  - # 217
+    frequency:    1.5031190117
+  - # 218
+    frequency:    1.5073347146
+  - # 219
+    frequency:    1.5175696039
+  - # 220
+    frequency:    1.5190534954
+  - # 221
+    frequency:    1.5248486037
+  - # 222
+    frequency:    1.5286366293
+  - # 223
+    frequency:    1.5356129190
+  - # 224
+    frequency:    1.5431939528
+  - # 225
+    frequency:    1.5479114397
+  - # 226
+    frequency:    1.5525653583
+  - # 227
+    frequency:    1.5536087901
+  - # 228
+    frequency:    1.5572196817
+  - # 229
+    frequency:    1.5629946810
+  - # 230
+    frequency:    1.5707874477
+  - # 231
+    frequency:    1.5788023039
+  - # 232
+    frequency:    1.5827488168
+  - # 233
+    frequency:    1.5876802654
+  - # 234
+    frequency:    1.5895970412
+  - # 235
+    frequency:    1.5964656159
+  - # 236
+    frequency:    1.6020556709
+  - # 237
+    frequency:    1.6060913506
+  - # 238
+    frequency:    1.6094871829
+  - # 239
+    frequency:    1.6171007066
+  - # 240
+    frequency:    1.6223874884
+  - # 241
+    frequency:    1.6249809595
+  - # 242
+    frequency:    1.6273889842
+  - # 243
+    frequency:    1.6292937363
+  - # 244
+    frequency:    1.6361125372
+  - # 245
+    frequency:    1.6394208884
+  - # 246
+    frequency:    1.6457490298
+  - # 247
+    frequency:    1.6516682229
+  - # 248
+    frequency:    1.6592151842
+  - # 249
+    frequency:    1.6632078216
+  - # 250
+    frequency:    1.6697618020
+  - # 251
+    frequency:    1.6737667819
+  - # 252
+    frequency:    1.6779675825
+  - # 253
+    frequency:    1.6849844734
+  - # 254
+    frequency:    1.6892498799
+  - # 255
+    frequency:    1.6942800614
+  - # 256
+    frequency:    1.6996721039
+  - # 257
+    frequency:    1.7012400840
+  - # 258
+    frequency:    1.7077680297
+  - # 259
+    frequency:    1.7118006987
+  - # 260
+    frequency:    1.7176317107
+  - # 261
+    frequency:    1.7184190362
+  - # 262
+    frequency:    1.7252692814
+  - # 263
+    frequency:    1.7309073008
+  - # 264
+    frequency:    1.7375214017
+  - # 265
+    frequency:    1.7405156558
+  - # 266
+    frequency:    1.7422467155
+  - # 267
+    frequency:    1.7468876674
+  - # 268
+    frequency:    1.7492024743
+  - # 269
+    frequency:    1.7548060172
+  - # 270
+    frequency:    1.7616556252
+  - # 271
+    frequency:    1.7668784023
+  - # 272
+    frequency:    1.7729866884
+  - # 273
+    frequency:    1.7807681217
+  - # 274
+    frequency:    1.7860241697
+  - # 275
+    frequency:    1.7879707279
+  - # 276
+    frequency:    1.7930724124
+  - # 277
+    frequency:    1.7961685507
+  - # 278
+    frequency:    1.7970408070
+  - # 279
+    frequency:    1.7991530185
+  - # 280
+    frequency:    1.8046228724
+  - # 281
+    frequency:    1.8098441247
+  - # 282
+    frequency:    1.8168713658
+  - # 283
+    frequency:    1.8205077261
+  - # 284
+    frequency:    1.8225589908
+  - # 285
+    frequency:    1.8307371452
+  - # 286
+    frequency:    1.8343893247
+  - # 287
+    frequency:    1.8376295974
+  - # 288
+    frequency:    1.8405346610
+  - # 289
+    frequency:    1.8487334485
+  - # 290
+    frequency:    1.8545109351
+  - # 291
+    frequency:    1.8646878735
+  - # 292
+    frequency:    1.8695210342
+  - # 293
+    frequency:    1.8709747551
+  - # 294
+    frequency:    1.8777980820
+  - # 295
+    frequency:    1.8813308190
+  - # 296
+    frequency:    1.8862440310
+  - # 297
+    frequency:    1.8911587939
+  - # 298
+    frequency:    1.8948461346
+  - # 299
+    frequency:    1.8994853241
+  - # 300
+    frequency:    1.9122398407
+  - # 301
+    frequency:    1.9147358628
+  - # 302
+    frequency:    1.9209832183
+  - # 303
+    frequency:    1.9219285731
+  - # 304
+    frequency:    1.9249666797
+  - # 305
+    frequency:    1.9278686722
+  - # 306
+    frequency:    1.9347722403
+  - # 307
+    frequency:    1.9380373649
+  - # 308
+    frequency:    1.9397350001
+  - # 309
+    frequency:    1.9471787422
+  - # 310
+    frequency:    1.9517654613
+  - # 311
+    frequency:    1.9523564644
+  - # 312
+    frequency:    1.9587303493
+  - # 313
+    frequency:    1.9642584404
+  - # 314
+    frequency:    1.9712407956
+  - # 315
+    frequency:    1.9779891699
+  - # 316
+    frequency:    1.9827422588
+  - # 317
+    frequency:    1.9893403701
+  - # 318
+    frequency:    1.9931621573
+  - # 319
+    frequency:    1.9937315622
+  - # 320
+    frequency:    2.0000275446
+  - # 321
+    frequency:    2.0023212827
+  - # 322
+    frequency:    2.0096032100
+  - # 323
+    frequency:    2.0125670038
+  - # 324
+    frequency:    2.0197893267
+  - # 325
+    frequency:    2.0248331959
+  - # 326
+    frequency:    2.0288516766
+  - # 327
+    frequency:    2.0358681502
+  - # 328
+    frequency:    2.0382853688
+  - # 329
+    frequency:    2.0473335903
+  - # 330
+    frequency:    2.0508184856
+  - # 331
+    frequency:    2.0557603552
+  - # 332
+    frequency:    2.0605620054
+  - # 333
+    frequency:    2.0639097548
+  - # 334
+    frequency:    2.0721198329
+  - # 335
+    frequency:    2.0770554049
+  - # 336
+    frequency:    2.0798029318
+  - # 337
+    frequency:    2.0828646283
+  - # 338
+    frequency:    2.0863749187
+  - # 339
+    frequency:    2.0925310636
+  - # 340
+    frequency:    2.0977258978
+  - # 341
+    frequency:    2.1055349417
+  - # 342
+    frequency:    2.1085001848
+  - # 343
+    frequency:    2.1123614168
+  - # 344
+    frequency:    2.1184090567
+  - # 345
+    frequency:    2.1336164981
+  - # 346
+    frequency:    2.1344694864
+  - # 347
+    frequency:    2.1410658353
+  - # 348
+    frequency:    2.1460834606
+  - # 349
+    frequency:    2.1531643510
+  - # 350
+    frequency:    2.1571537156
+  - # 351
+    frequency:    2.1630959064
+  - # 352
+    frequency:    2.1673968513
+  - # 353
+    frequency:    2.1724820240
+  - # 354
+    frequency:    2.1772372277
+  - # 355
+    frequency:    2.1823739865
+  - # 356
+    frequency:    2.1879519053
+  - # 357
+    frequency:    2.1913728389
+  - # 358
+    frequency:    2.1979177967
+  - # 359
+    frequency:    2.2045661848
+  - # 360
+    frequency:    2.2073248095
+  - # 361
+    frequency:    2.2133299954
+  - # 362
+    frequency:    2.2192835850
+  - # 363
+    frequency:    2.2249940281
+  - # 364
+    frequency:    2.2304471450
+  - # 365
+    frequency:    2.2352515946
+  - # 366
+    frequency:    2.2473887670
+  - # 367
+    frequency:    2.2488607114
+  - # 368
+    frequency:    2.2688239277
+  - # 369
+    frequency:    2.2761432613
+  - # 370
+    frequency:    2.2905303933
+  - # 371
+    frequency:    2.2997808756
+  - # 372
+    frequency:    2.3141779701
+  - # 373
+    frequency:    2.3195623642
+  - # 374
+    frequency:    2.3346893510
+  - # 375
+    frequency:    2.3441772175
+  - # 376
+    frequency:    2.3468651039
+  - # 377
+    frequency:    2.3593260217
+  - # 378
+    frequency:    2.3850160030
+  - # 379
+    frequency:    2.4317664074
+  - # 380
+    frequency:    2.4691032979
+  - # 381
+    frequency:    2.4744409461
+  - # 382
+    frequency:    2.4775854515
+  - # 383
+    frequency:    2.4890864812
+  - # 384
+    frequency:    2.4987626875
+  - # 385
+    frequency:    2.5066297075
+  - # 386
+    frequency:    2.5092334499
+  - # 387
+    frequency:    2.5277037247
+  - # 388
+    frequency:    2.5313157431
+  - # 389
+    frequency:    2.5387016357
+  - # 390
+    frequency:    2.5439560681
+  - # 391
+    frequency:    2.5555595538
+  - # 392
+    frequency:    2.5665683063
+  - # 393
+    frequency:    2.5831175903
+  - # 394
+    frequency:    2.6092559631
+  - # 395
+    frequency:    2.6168749100
+  - # 396
+    frequency:    2.6386182202
+  - # 397
+    frequency:    2.6516902676
+  - # 398
+    frequency:    2.6624946888
+  - # 399
+    frequency:    2.6777359630
+  - # 400
+    frequency:    2.6822398650
+  - # 401
+    frequency:    2.6869553084
+  - # 402
+    frequency:    2.7055285894
+  - # 403
+    frequency:    2.7285583281
+  - # 404
+    frequency:    2.7298968422
+  - # 405
+    frequency:    2.7413659859
+  - # 406
+    frequency:    2.7475764510
+  - # 407
+    frequency:    2.7485744827
+  - # 408
+    frequency:    2.7608224167
+  - # 409
+    frequency:    2.7704507544
+  - # 410
+    frequency:    2.7845504885
+  - # 411
+    frequency:    2.8027333005
+  - # 412
+    frequency:    2.8116055030
+  - # 413
+    frequency:    2.8167567768
+  - # 414
+    frequency:    2.8358554094
+  - # 415
+    frequency:    2.8570990207
+  - # 416
+    frequency:    2.8624085699
+  - # 417
+    frequency:    2.8712537413
+  - # 418
+    frequency:    2.8898592042
+  - # 419
+    frequency:    2.9088488125
+  - # 420
+    frequency:    2.9146147452
+  - # 421
+    frequency:    2.9319065145
+  - # 422
+    frequency:    2.9391347003
+  - # 423
+    frequency:    2.9471778144
+  - # 424
+    frequency:    2.9543690076
+  - # 425
+    frequency:    2.9571594065
+  - # 426
+    frequency:    2.9746532864
+  - # 427
+    frequency:    2.9837689916
+  - # 428
+    frequency:    2.9869562529
+  - # 429
+    frequency:    3.0051659412
+  - # 430
+    frequency:    3.0061654572
+  - # 431
+    frequency:    3.0287197680
+  - # 432
+    frequency:    3.0460113047
+  - # 433
+    frequency:    3.0589562586
+  - # 434
+    frequency:    3.0749332273
+  - # 435
+    frequency:    3.0912538247
+  - # 436
+    frequency:    3.1033515519
+  - # 437
+    frequency:    3.1345132933
+  - # 438
+    frequency:    3.1463210052
+  - # 439
+    frequency:    3.1527186479
+  - # 440
+    frequency:    3.1578618794
+  - # 441
+    frequency:    3.1808608651
+  - # 442
+    frequency:    3.2175588375
+  - # 443
+    frequency:    3.2240901563
+  - # 444
+    frequency:    3.2935355668
+  - # 445
+    frequency:    3.3203918802
+  - # 446
+    frequency:    3.3575620890
+  - # 447
+    frequency:    3.3989715798
+  - # 448
+    frequency:    3.4201816687
+  - # 449
+    frequency:    3.4341942066
+  - # 450
+    frequency:    3.4631625046
+  - # 451
+    frequency:    3.4820273972
+  - # 452
+    frequency:    3.5057418151
+  - # 453
+    frequency:    3.5098907450
+  - # 454
+    frequency:    3.5311851731
+  - # 455
+    frequency:    3.5457150377
+  - # 456
+    frequency:    3.5653485152
+  - # 457
+    frequency:    3.5726169479
+  - # 458
+    frequency:    3.5910318222
+  - # 459
+    frequency:    3.6095484243
+  - # 460
+    frequency:    3.6391930880
+  - # 461
+    frequency:    3.6752304639
+  - # 462
+    frequency:    3.6902437208
+  - # 463
+    frequency:    3.7376589019
+  - # 464
+    frequency:    3.7463024936
+  - # 465
+    frequency:    3.7912608153
+  - # 466
+    frequency:    3.8221740000
+  - # 467
+    frequency:    3.8459113077
+  - # 468
+    frequency:    3.8807222128
+  - # 469
+    frequency:    3.9078138288
+  - # 470
+    frequency:    3.9222845758
+  - # 471
+    frequency:    3.9288195126
+  - # 472
+    frequency:    3.9510756005
+  - # 473
+    frequency:    3.9791049312
+  - # 474
+    frequency:    4.0134782863
+  - # 475
+    frequency:    4.0378708544
+  - # 476
+    frequency:    4.0705227247
+  - # 477
+    frequency:    4.1374044891
+

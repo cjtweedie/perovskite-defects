@@ -1,3 +1,3 @@
-frequency product (min) = 2.3761142186833624e+76 THz
-frequency product (saddle) = 3.781834496148851e+76 THz
-Vineyard prefactor = 0.6282967224247985 THz
+frequency product (min) = 2.3674438943413417e+76 THz
+frequency product (saddle) = 3.762028115355093e+76 THz
+Vineyard prefactor = 0.6292998940327914 THz
