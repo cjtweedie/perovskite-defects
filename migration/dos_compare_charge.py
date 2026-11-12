@@ -25,7 +25,7 @@ start_diff = np.where(freq_V0_sad == freq_V0_min[0])[0][0]
 for j in range(len(freq_V0_min)):
     dos_V0_diff[j] = dos_V0_min[j]-dos_V0_sad[j+start_diff]
     dos_Vp_diff[j] = dos_Vp_min[j]-dos_Vp_sad[j+start_diff]
-    dos_V_diff[j] = dos_V0_diff[j] - dos_Vp_diff[j]
+    dos_V_diff[j] = abs(dos_V0_diff[j] - dos_Vp_diff[j])
     print(freq_V0_min[j], dos_V0_diff[j], file=f0)
     print(freq_Vp_min[j], dos_Vp_diff[j], file=fp)
 
@@ -33,10 +33,10 @@ for j in range(len(freq_V0_min)):
 fig1, ax1 = plt.subplots(1, 1)
 ax1.plot(freq_V0_min, dos_V0_diff, label="VI0")   
 ax1.plot(freq_Vp_min, dos_Vp_diff, label="VI+") 
-ax1.plot(freq_V0_min, 0.5*dos_V_diff, label="VI0 - VI+")
+ax1.plot(freq_V0_min, dos_V_diff, label="|VI0 - VI+|")
 ax1.plot(freq_V0_min, np.zeros(len(freq_V0_min)), color="black", linestyle='--')
 ax1.set_xlim(freq_V0_min[0], max(freq_V0_min[-1], freq_V0_sad[-1]))
-ax1.set_ylim(min(np.min(dos_V0_diff), np.min(dos_Vp_diff)), max(np.max(dos_V0_diff), np.max(dos_Vp_diff)))
+ax1.set_ylim(min(np.min(dos_V0_diff), np.min(dos_Vp_diff))-0.5, max(np.max(dos_V0_diff), np.max(dos_Vp_diff), np.max(dos_V_diff))+0.5)
 ax1.set_xlabel("Frequency [THz]", size="medium")
 ax1.set_ylabel("Density of states [a.u.]", size="medium")
 ax1.legend()
