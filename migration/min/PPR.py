@@ -66,6 +66,23 @@ m = get_mass(data_atoms)
 # so PPR ~ 1
 e0 = get_evec(data_bands, 0)
 
+# check normalisation of eigenmodes; need to loop over all elements from all atomic contributions
+#print(e0)
+
+e0_full = [None]*len(e0)*3
+count = 1
+for k in range(len(e0)):
+    count = count -1
+    for j in range(3):
+        i = k + count
+        #print("i = ", i)
+        e0_full[i] = e0[k][j]
+        #print(e0_full[i])
+        count = count + 1
+print(e0_full)
+
+print("|e0|^2 = ", mod_sq(e0_full))
+
 # first optical mode, probably more localised? so PPR < 1
 e3 = get_evec(data_bands, 3)
 e400 = get_evec(data_bands, 100)
@@ -73,16 +90,49 @@ e400 = get_evec(data_bands, 100)
 p0 = M1(m, e0)/(len(e0)*M2(m, e0))
 p3 = M1(m, e3)/(len(e3)*M2(m, e3))
 
-print("M1 for band 0", ":", M1(m, e0))
-print("N_k*M2 for band 0", ":", len(e0)*M2(m, e0))
+#print("M1 for band 0", ":", M1(m, e0))
+#print("N_k*M2 for band 0", ":", len(e0)*M2(m, e0))
 print("PPR for band 0", "at q = 0:", p0)
-print("M1 for band 3", ":", M1(m, e3))
-print("N_k*M2 for band 3", ":", len(e3)*M2(m, e3))
+#print("M1 for band 3", ":", M1(m, e3))
+#print("N_k*M2 for band 3", ":", len(e3)*M2(m, e3))
 print("PPR for band 3", "at q = 0:", p3)
 
 # loop over all phonon modes j, plot the PPRs?
 # finally make an Natoms variable, won't be too slow here because not referencing in different scope
-#Nk = len(m)
-#for j in range(len(data_bands)):
-#    ej = get_evec(data_bands, j)
-#    pj = M1(m, ej)/(Nk*M2(m, ej))    
+Nj = len(data_bands)
+Nk = len(m)
+freqs = [None]*Nj
+modes = [None]*Nj
+pj = [None]*Nj
+for j in range(Nj):
+    ej = get_evec(data_bands, j)
+    pj[j] = M1(m, ej)/(Nk*M2(m, ej)) 
+    freqs[j] = data_bands[j]["frequency"] 
+    modes[j] = j+1
+    
+# maybe plot a delta function at each frequency instead??
+# or plot j instead of freq for even spacing
+    
+fig1, ax1 = plt.subplots(1, 1)
+#ax1.scatter(freqs, pj, marker='o', linewidths=0.1) 
+ax1.scatter(freqs, pj, linewidth=1.0) 
+#ax1.set_xlim()
+#ax1.set_ylim()
+ax1.set_xlabel("Phonon frequency (THz)", size="medium")
+ax1.set_ylabel("Phonon participation ratio", size="medium")
+#ax1.legend()
+ax1.set_title("VI(0) 8d-I4c, min")
+fig1.tight_layout()
+fig1.savefig("./PPR_freq.png")
+
+fig2, ax2 = plt.subplots(1, 1)
+#ax1.scatter(freqs, pj, marker='o', linewidths=0.1) 
+ax2.scatter(modes, pj, linewidth=1.0) 
+#ax1.set_xlim()
+#ax1.set_ylim()
+ax2.set_xlabel("Phonon mode index j", size="medium")
+ax2.set_ylabel("Phonon participation ratio", size="medium")
+#ax1.legend()
+ax2.set_title("VI(0) 8d-I4c, min")
+fig2.tight_layout()
+fig2.savefig("./PPR_j.png")
