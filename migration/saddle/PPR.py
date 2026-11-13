@@ -47,7 +47,8 @@ def M1(mass, disp):
     N_atoms = len(disp)
     sum = 0
     for k in range(N_atoms):
-        sum = sum + mass[k]*mod_sq(disp[k])
+        #sum = sum + mass[k]*mod_sq(disp[k])
+        sum = sum + mod_sq(disp[k])
     return sum*sum
 
 
@@ -56,29 +57,46 @@ def M2(mass, disp):
     N_atoms = len(disp)
     sum = 0
     for k in range(N_atoms):
-        sum = sum + (mass[k]*mod_sq(disp[k]))**2
+        #sum = sum + (mass[k]*mod_sq(disp[k]))**2
+        sum = sum + (mod_sq(disp[k]))*(mod_sq(disp[k]))
     return sum  
 
 ## calculate PPR ##
 m = get_mass(data_atoms)
 
-#acoustic modes [0,2] aren't relevant; at q=0 they should all be collective translations
-# so PPR ~ 1
+# very first mode is the unstable negative freq, highly localised on migrating ion
+# wants to move from local max of PES (TS) to local min 
 e0 = get_evec(data_bands, 0)
 
+# acoustic modes [0,2] aren't relevant; at q=0 they should all be collective translations
+# so PPR ~ 1
+e1 = get_evec(data_bands, 1)
+
 # first optical mode, probably more localised? so PPR < 1
-e3 = get_evec(data_bands, 3)
-e400 = get_evec(data_bands, 100)
+e4 = get_evec(data_bands, 4)
 
 p0 = M1(m, e0)/(len(e0)*M2(m, e0))
-p3 = M1(m, e3)/(len(e3)*M2(m, e3))
+p1 = M1(m, e1)/(len(e1)*M2(m, e1))
+p4 = M1(m, e4)/(len(e4)*M2(m, e4))
 
-print("M1 for band 0", ":", M1(m, e0))
-print("N_k*M2 for band 0", ":", len(e0)*M2(m, e0))
-print("PPR for band 0", "at q = 0:", p0)
-print("M1 for band 3", ":", M1(m, e3))
-print("N_k*M2 for band 3", ":", len(e3)*M2(m, e3))
-print("PPR for band 3", "at q = 0:", p3)
+print("PPR for band 1 (unstable)", "at q = 0:", p0)
+print("PPR for band 2 (acoustic)", "at q = 0:", p1)
+print("PPR for band 5 (optical)", "at q = 0:", p4)
+
+# check normalisation of eigenmodes; need to loop over all elements from all atomic contributions
+e0_full = [None]*len(e0)*3
+count = 1
+for k in range(len(e0)):
+    count = count -1
+    for j in range(3):
+        i = k + count
+        #print("i = ", i)
+        e0_full[i] = e0[k][j]
+        #print(e0_full[i])
+        count = count + 1
+#print(e0_full)
+
+print("|e0|^2 = ", mod_sq(e0_full))
 
 # loop over all phonon modes j, plot the PPRs?
 # finally make an Natoms variable, won't be too slow here because not referencing in different scope
@@ -104,7 +122,7 @@ ax1.scatter(freqs, pj, linewidth=1.0)
 ax1.set_xlabel("Phonon frequency (THz)", size="medium")
 ax1.set_ylabel("Phonon participation ratio", size="medium")
 #ax1.legend()
-ax1.set_title("VI(0) 8d-I4c, min")
+ax1.set_title("VI(0) 8d-I4c, saddle")
 fig1.tight_layout()
 fig1.savefig("./PPR_freq.png")
 
@@ -116,6 +134,6 @@ ax2.scatter(modes, pj, linewidth=1.0)
 ax2.set_xlabel("Phonon mode index j", size="medium")
 ax2.set_ylabel("Phonon participation ratio", size="medium")
 #ax1.legend()
-ax1.set_title("VI(0) 8d-I4c, saddle")
+ax2.set_title("VI(0) 8d-I4c, saddle")
 fig2.tight_layout()
 fig2.savefig("./PPR_j.png")
