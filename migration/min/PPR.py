@@ -103,10 +103,10 @@ Nk = len(data_bands[0]["eigenvector"])
 freqs = [None]*Nj
 modes = [None]*Nj
 pj = [None]*Nj
-proj_Pb = [None]*Nj
-proj_Cs = [None]*Nj
-proj_I = [None]*Nj
-proj_Br = [None]*Nj
+#proj_Pb = [None]*Nj
+#proj_Cs = [None]*Nj
+#proj_I = [None]*Nj
+#proj_Br = [None]*Nj
 #ipj = [None]*Nj
 for j in range(Nj):
     ej = get_evec(data_bands, j)
@@ -124,10 +124,16 @@ for j in range(Nj):
 proj_e0 = [None]*Nk
 proj_e3 = [None]*Nk
 atoms = [None]*Nk
+f0 = open("proj_e0", 'w')
+f3 = open("proj_e3", 'w')
+print("Atom no.", "Eigenmode projection weight", file=f0)
+print("Atom no.", "Eigenmode projection weight", file=f3)
 for k in range(Nk):
     proj_e0[k] = mod_sq(e0[k])
     proj_e3[k] = mod_sq(e3[k])
     atoms[k] = k+1
+    print(atoms[k], proj_e0[k], file=f0)
+    print(atoms[k], proj_e3[k], file=f3)
     
 # maybe plot a delta function at each frequency instead??
 # or plot j instead of freq for even spacing
