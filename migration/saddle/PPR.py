@@ -4,13 +4,14 @@ from yaml import CLoader as Loader, CDumper as Dumper
 import matplotlib.pyplot as plt
 
 # READ FROM BANDS...NOT QPOINTS...NEED MASS DATA!
-with open("./band.yaml", 'r') as f:
+#with open("./band.yaml", 'r') as f:
+# DON'T NEED MASSES ANYMORE, read from qpoints w eigenvectors on
+with open("./qpoints.yaml", 'r') as f:
 #    data = yaml.load(f, Loader=yaml.SafeLoader)
     data = yaml.load(f, Loader=Loader)
 
 data_bands = data["phonon"][0]["band"]
-data_atoms = data["points"]
-
+#data_atoms = data["points"]
 
 # first, extract eigenvectors for given band index j, qpoint q (always Gamma here)
 # this corresponds to phonon eigenmode e_jq(omega) 
@@ -22,12 +23,12 @@ def get_evec(phonon_bands, band_idx):
     return evec
 
 
-def get_mass(atoms):
-    N_atoms = len(atoms)
-    mass_vec = [None]*N_atoms
-    for k in range(N_atoms):
-        mass_vec[k] = atoms[k]["mass"]
-    return mass_vec
+#def get_mass(atoms):
+#    N_atoms = len(atoms)
+#    mass_vec = [None]*N_atoms
+#    for k in range(N_atoms):
+#        mass_vec[k] = atoms[k]["mass"]
+#    return mass_vec
 
 
 # calculate mod squared of atomic displacement vector within given normal mode e_jq
