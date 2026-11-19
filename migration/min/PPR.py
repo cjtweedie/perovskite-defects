@@ -3,15 +3,16 @@ import yaml
 from yaml import CLoader as Loader, CDumper as Dumper
 import matplotlib.pyplot as plt
 
-# READ FROM BANDS...NOT QPOINTS...NEED MASS DATA!
-#with open("./band.yaml", 'r') as f:
 # DON'T NEED MASSES ANYMORE, read from qpoints w eigenvectors on
 with open("./qpoints.yaml", 'r') as f:
 #    data = yaml.load(f, Loader=yaml.SafeLoader)
     data = yaml.load(f, Loader=Loader)
-
 data_bands = data["phonon"][0]["band"]
-#data_atoms = data["points"]
+
+# still need mass for some things...but read from phonopy_disp
+with open("./phonopy_disp.yaml", 'r') as f:
+    data = yaml.load(f, Loader=Loader)
+data_atoms = data["primitive_cell"]["points"]
 
 # first, extract eigenvectors for given band index j, qpoint q (always Gamma here)
 # this corresponds to phonon eigenmode e_jq(omega) 
@@ -23,12 +24,12 @@ def get_evec(phonon_bands, band_idx):
     return evec
 
 
-#def get_mass(atoms):
-#    N_atoms = len(atoms)
-#    mass_vec = [None]*N_atoms
-#    for k in range(N_atoms):
-#        mass_vec[k] = atoms[k]["mass"]
-#    return mass_vec
+def get_mass(atoms):
+    N_atoms = len(atoms)
+    mass_vec = [None]*N_atoms
+    for k in range(N_atoms):
+        mass_vec[k] = atoms[k]["mass"]
+    return mass_vec
 
 
 # calculate mod squared of atomic displacement vector within given normal mode e_jq
@@ -61,8 +62,6 @@ def M2(disp):
         sum = sum + (mod_sq(disp[k]))*(mod_sq(disp[k]))
     return sum  
 
-#m = get_mass(data_atoms)
-
 ## calculate PPR ##
 
 # acoustic modes [0,2] aren't relevant; at q=0 they should all be collective translations
@@ -73,17 +72,13 @@ e0 = get_evec(data_bands, 0)
 e3 = get_evec(data_bands, 3)
 
 p0 = M1(e0)/(len(e0)*M2(e0))
-ip0 = 1/M2(e0)
 p3 = M1(e3)/(len(e3)*M2(e3))
-ip3 = 1/M2(e3)
 
 print("(sum of |n|^2)^2 (acoustic) = ", M1(e0))
 print("sum of (|n|^2)^2 (acoustic) = ", M2(e0))
 
 print("PPR for band 1 (acoustic)", "at q = 0:", p0)
-#print("IPPR for band 1 (acoustic)", "at q = 0:", ip0)
 print("PPR for band 4 (optical)", "at q = 0:", p3)
-#print("IPPR for band 2 (acoustic)", "at q = 0:", ip1)
 
 # check normalisation of eigenmodes; need to loop over all elements from all atomic contributions
 e0_full = [None]*len(e0)*3
@@ -104,17 +99,11 @@ Nk = len(data_bands[0]["eigenvector"])
 freqs = [None]*Nj
 modes = [None]*Nj
 pj = [None]*Nj
-#proj_Pb = [None]*Nj
-#proj_Cs = [None]*Nj
-#proj_I = [None]*Nj
-#proj_Br = [None]*Nj
-#ipj = [None]*Nj
 for j in range(Nj):
     ej = get_evec(data_bands, j)
     pj[j] = M1(ej)/(Nk*M2(ej)) 
-    #ipj[j] = 1/M2(ej) 
     freqs[j] = data_bands[j]["frequency"] 
-    modes[j] = j+1
+    modes[j] = j
     
     
 # also plot the magnitude of atom projections, for each mode
@@ -122,30 +111,33 @@ for j in range(Nj):
 # plot the projection into each of 159 atoms for all 477 modes??
 # or show proj into atomic species Cs, Pb, I, Br
 # since I only care about behaviour of individual modes, can look at all atoms
+# need to normalise the displacement vectors by atomic mass
 proj_e0 = [None]*Nk
 proj_e3 = [None]*Nk
 atoms = [None]*Nk
+m = get_mass(data_atoms)
 f0 = open("proj_e0", 'w')
 f3 = open("proj_e3", 'w')
 print("Atom no.", "Eigenmode projection weight", file=f0)
 print("Atom no.", "Eigenmode projection weight", file=f3)
 for k in range(Nk):
-    proj_e0[k] = mod_sq(e0[k])
-    proj_e3[k] = mod_sq(e3[k])
+    proj_e0[k] = mod_sq(e0[k])/m[k]
+    proj_e3[k] = mod_sq(e3[k])/m[k]
     atoms[k] = k+1
     print(atoms[k], proj_e0[k], file=f0)
     print(atoms[k], proj_e3[k], file=f3)
     
-# maybe plot a delta function at each frequency instead??
-# or plot j instead of freq for even spacing
-    
-fig1, ax1 = plt.subplots(1, 1)
-ax1.scatter(freqs, pj, linewidth=1.0) 
-ax1.set_xlabel("Phonon frequency (THz)", size="medium")
-ax1.set_ylabel("Phonon participation ratio", size="medium")
-ax1.set_title("VI(0) 8d-I4c, min")
-fig1.tight_layout()
-fig1.savefig("./PPR_freq.png")
+
+# mode range for PPR plot
+N = 10
+fig2, ax2 = plt.subplots(1, 1)
+ax2.scatter(modes[0:N], pj[0:N], linewidth=1.0) 
+ax2.set_xlabel("Phonon mode index j", size="medium")
+ax2.set_ylabel("Phonon participation ratio", size="medium")
+ax2.set_xticks(np.arange(N))
+ax2.set_title("VI(0) 8d-I4c, min")
+fig2.tight_layout()
+fig2.savefig("./PPR_low10.png")
 
 fig2, ax2 = plt.subplots(1, 1)
 ax2.scatter(modes, pj, linewidth=1.0) 

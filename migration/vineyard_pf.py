@@ -1,5 +1,6 @@
 import numpy as np
 import yaml 
+from yaml import CLoader as Loader
 import matplotlib.pyplot as plt
 
 # need to parse the phonopy qpoints.yaml files to extract frequencies at chosen q point/s
@@ -10,11 +11,13 @@ import matplotlib.pyplot as plt
 # don't need this, dyn mat eigs should already be in THz
 #conversion_factor_to_THz = 15.633302
 
-data_min = yaml.safe_load(open("./min/qpoints.yaml"))
-data_sad = yaml.safe_load(open("./saddle/qpoints.yaml"))
+with open("./min/qpoints.yaml", 'r') as f:
+    data_min = yaml.load(f, Loader=Loader)
+with open("./saddle/qpoints.yaml", 'r') as f:
+    data_sad = yaml.load(f, Loader=Loader)
 
-freq_data_min = data_min["phonon"][0]["band"]
-freq_data_sad = data_sad["phonon"][0]["band"]
+bands_min = data_min["phonon"][0]["band"]
+bands_sad = data_sad["phonon"][0]["band"]
 
 # set some NONZERO threshold frequency below which phonons are excluded from the products
 # ensures that acoustic modes at gamma are omitted even with numerical error
@@ -31,17 +34,17 @@ def freq_scan(N_stop, freq_data):
 
 # function to calculate the product of all non-negative phonon frequencies in the minimum and transition state configurations
 def freq_prod(N: int, freq_data):
-    N_start = freq_scan(5, freq_data)
+    N_start = freq_scan(10, freq_data)
     prod = 1
     for j in range(N_start, N):
         freq = freq_data[j]["frequency"]
-        prod = prod * freq
+        prod = prod*freq
         
     return prod
 
-omega_min = freq_prod(len(freq_data_min), freq_data_min)
-omega_sad = freq_prod(len(freq_data_sad), freq_data_sad)
-pf = omega_min / omega_sad
+omega_min = freq_prod(len(bands_min), bands_min)
+omega_sad = freq_prod(len(bands_sad), bands_sad)
+pf = omega_min/omega_sad
 
 f = open("vineyard_pf.txt", 'w')
 print("frequency product (min) =", omega_min, "THz", file=f)
